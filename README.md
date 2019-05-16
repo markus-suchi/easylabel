@@ -36,10 +36,10 @@ ICRA2019 publication text in near future
 ```
 
 If you have any questions please contact:
-Markus Suchi – email: suchi@acin.tuwien.ac.at
-Tim Patten – email: patten@acin.tuwien.ac.at
+- Markus Suchi – email: suchi@acin.tuwien.ac.at
+- Tim Patten – email: patten@acin.tuwien.ac.at
 
-##Tutorial
+## Tutorial
 ```
 I am currently working on a tutorial and will provide information here.
 ```
