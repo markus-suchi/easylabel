@@ -75,6 +75,7 @@ static float TEMP_ADAPTIVE_P1 = 0.0055f;
 static float TEMP_ADAPTIVE_P2 = 0.0005f;
 static float TEMP_ADAPTIVE_P3 = 0.003f;
 static float CLUSTER_TOLERANCE = 0.006f;
+static float MIN_THRESH_DISTANCE = 0.001f;
 static float MIN_LABEL_DISTANCE = 0.0017f;
 static int MIN_CLUSTER_SIZE = 180;
 static float MAX_LABEL_DISTANCE = 1000.0f;
@@ -98,7 +99,7 @@ int main(int argc, char *argv[]) {
 
   std::string source_dir("");
   std::string output_dir("");
-  float thresh = MIN_LABEL_DISTANCE;
+  float thresh = MIN_THRESH_DISTANCE;
   bool adapt = true;
   bool noadapt = false;
   bool uselabels = false;
@@ -114,7 +115,7 @@ int main(int argc, char *argv[]) {
                                                        "Directory with scenes point clouds (.pcd)")(
       "target_dir,t", po::value<std::string>(&output_dir)->default_value("")->implicit_value("./"),
       "Directory with extracted point clouds (.pcd)")(
-      "min_dist,m", po::value<float>(&thresh)->default_value(MIN_LABEL_DISTANCE)->implicit_value(MIN_LABEL_DISTANCE),
+      "min_dist,m", po::value<float>(&thresh)->default_value(MIN_THRESH_DISTANCE)->implicit_value(MIN_THRESH_DISTANCE),
       "Minimal distance threshold for change (m)")("no_adaptive_smoothing,a", po::bool_switch(&noadapt),
                                                    "Disable depth adaptive distance change threshold")(
       "use_labels,b", po::bool_switch(&uselabels), "Reuse labeling from background pcd")(
@@ -166,7 +167,7 @@ int main(int argc, char *argv[]) {
   if (adapt) {
     differ.SetEnableAdaptive(TEMP_ADAPTIVE_P1, TEMP_ADAPTIVE_P2, TEMP_ADAPTIVE_P3);
   } else {
-    differ.SetDisableAdaptive(MIN_LABEL_DISTANCE);
+    differ.SetDisableAdaptive(thresh);
   }
 
   // if we have a directory apply depth difference sequence, else do not create a template and require to get a
@@ -280,6 +281,8 @@ int main(int argc, char *argv[]) {
     viewer->createViewPort(0.33, 0.0, 0.65, 1.0, v2);
     // cluster template vis
     viewer->createViewPort(0.66, 0.0, 0.98, 1.0, v3);
+    //viewer->addText("Hit 'n' to continue.",35,15,"Message",v1);
+    viewer->addText("Hit 'n' to continue.",15,15,15,1.0,1.0,1.0,"Message",v1);
   }
 
   // LABEL SINGLE FRAMES
@@ -368,9 +371,8 @@ int main(int argc, char *argv[]) {
     if (view) {
       pcl::visualization::PointCloudColorHandlerGenericField<PointT> labelvis2(result_clustered, "label");
       pcl::visualization::PointCloudColorHandlerRGBField<PointT> rgb(cloud);
-      pcl::visualization::PointCloudColorHandlerGenericField<PointT> labelvis(result_labeled, "label");
-
-      if (!viewer->wasStopped()) {
+      pcl::visualization::PointCloudColorHandlerGenericField<PointT> labelvis(result_labeled, "label");      
+      if (!viewer->wasStopped()) {        
         if (!viewer->updatePointCloud<PointT>(cloud, rgb, "result")) {
           viewer->addPointCloud<PointT>(cloud, rgb, "result", v1);
         }

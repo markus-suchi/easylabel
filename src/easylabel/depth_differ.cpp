@@ -45,7 +45,7 @@ void DepthDiffer::Apply(const typename pcl::PointCloud<PointT>::ConstPtr cloud,
       if (!std::isnan(cloud2->at(cols, rows).z)) {
         z_cloud2 = cloud2->at(cols, rows).z;
         float diff = z_cloud2 - z_cloud;
-        thresh = thresh + AdaptiveDepth(cloud2->at(cols, rows).z);
+        thresh = thresh_ + AdaptiveDepth(cloud2->at(cols, rows).z);
         if (std::fabs(diff) > thresh) {
           // std::cout << "depth/diff/thresh/athresh: " << cloud2->at(cols, rows).z << "/" << diff <<
           // "/"<<thresh<<"/"<<temp_thresh << std::endl;
