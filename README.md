@@ -21,7 +21,7 @@ EasyLabel is created to work with RGB-D data and uses [OpenCV](http://opencv.org
 
 ```
 cd ~/somewhere
-git clone 'https://github.com/markus-suchi/easylabel'
+git clone 'https://github.com/markus-suchi/easylabel.git'
 cd easylabel
 mkdir build
 cd build
