@@ -83,7 +83,7 @@ The first file in the given folder (sorted by name: 000.pcd) will be considered 
 The rest of the files contain 1 additional object (001.pcd - 003.pcd).
 Use the following command:
 ```
-bin/el_diff -s data_tutorial/extract/000/ -t data_tutorial/label -v
+bin/el_diff -s data_tutorial/accu/ -t data_tutorial/label -v
 ```
 You will see a visualization of the labeling process.
 On the left side is the input cloud, and the generated label template on the right.
