@@ -96,4 +96,3 @@ pcl_viewer data_tutorial/label/* -multiview 1
 ```
 Hit 6 to see the labeling.
 
-REMARK: An extended tutorial will be added soon.
