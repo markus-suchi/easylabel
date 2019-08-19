@@ -74,7 +74,7 @@ Those files are the input for further processing.
 ```
 bin/el_accu -s data_tutorial/extract/000/ -t data_tutorial/accu/000.pcd
 ..
-bin/el_accu -s data_tutorial/extract/004/ -t data_tutorial/accu/004.pcd
+bin/el_accu -s data_tutorial/extract/003/ -t data_tutorial/accu/003.pcd
 ```
 To use the differencing you have to use at least 2 sequences.
 
