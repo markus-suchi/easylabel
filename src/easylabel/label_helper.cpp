@@ -35,8 +35,12 @@ float findNearestNeighbor(const pcl::search::KdTree<pcl::PointXYZRGBL>::Ptr kdtr
 
 void extractEuclidianDistanceCluster(const pcl::PointCloud<pcl::PointXYZRGBL>::Ptr cloud_filtered,
                                             pcl::PointCloud<pcl::PointXYZRGBL>::Ptr cloud_clustered, const uint32_t label) {
+  boost::shared_ptr<std::vector<int>> indices(new std::vector<int>);
+  pcl::PointCloud<pcl::PointXYZRGBL>::Ptr outputCloud(new pcl::PointCloud<pcl::PointXYZRGBL>);
+  pcl::removeNaNFromPointCloud(*cloud_filtered, *outputCloud, *indices);
+
   pcl::search::KdTree<pcl::PointXYZRGBL>::Ptr tree(new pcl::search::KdTree<pcl::PointXYZRGBL>);
-  tree->setInputCloud(cloud_filtered);
+  tree->setInputCloud(cloud_filtered,indices);
 
   std::vector<pcl::PointIndices> cluster_indices;
   pcl::EuclideanClusterExtraction<pcl::PointXYZRGBL> ec;
@@ -44,6 +48,7 @@ void extractEuclidianDistanceCluster(const pcl::PointCloud<pcl::PointXYZRGBL>::P
   ec.setMinClusterSize(MIN_CLUSTER_SIZE);
   ec.setSearchMethod(tree);
   ec.setInputCloud(cloud_filtered);
+  ec.setIndices(indices);
   ec.extract(cluster_indices);
 
   std::cout << "#cluster found: " << cluster_indices.size() << std::endl;
