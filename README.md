@@ -31,8 +31,39 @@ make
 
 ## Citation
 If you find EasyLabel helpful please cite:
+
 ```
-ICRA2019 publication text in near future
+@inproceedings{DBLP:conf/icra/SuchiPFV19,
+  author    = {Markus Suchi and
+               Timothy Patten and
+               David Fischinger and
+               Markus Vincze},
+  title     = {EasyLabel: {A} Semi-Automatic Pixel-wise Object Annotation Tool for
+               Creating Robotic {RGB-D} Datasets},
+  booktitle = {International Conference on Robotics and Automation, {ICRA} 2019,
+               Montreal, QC, Canada, May 20-24, 2019},
+  pages     = {6678--6684},
+  year      = {2019},
+  crossref  = {DBLP:conf/icra/2019},
+  url       = {https://doi.org/10.1109/ICRA.2019.8793917},
+  doi       = {10.1109/ICRA.2019.8793917},
+  timestamp = {Tue, 13 Aug 2019 20:25:20 +0200},
+  biburl    = {https://dblp.org/rec/bib/conf/icra/SuchiPFV19},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+```
+```
+@proceedings{DBLP:conf/icra/2019,
+  title     = {International Conference on Robotics and Automation, {ICRA} 2019,
+               Montreal, QC, Canada, May 20-24, 2019},
+  publisher = {{IEEE}},
+  year      = {2019},
+  url       = {http://ieeexplore.ieee.org/xpl/mostRecentIssue.jsp?punumber=8780387},
+  isbn      = {978-1-5386-6027-0},
+  timestamp = {Tue, 13 Aug 2019 20:23:21 +0200},
+  biburl    = {https://dblp.org/rec/bib/conf/icra/2019},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
 ```
 
 If you have any questions please contact:
