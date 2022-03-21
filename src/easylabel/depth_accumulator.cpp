@@ -85,6 +85,8 @@ void DepthAccumulator::Apply(
     for (int cols = 0; cols < width_; ++cols) {
       if (accu_cloud_->at(cols, rows).z == 0 ||
           std::isnan(accu_cloud_->at(cols, rows).z)) {
+        addPoint.x = std::numeric_limits<float>::quiet_NaN();
+        addPoint.y = std::numeric_limits<float>::quiet_NaN();
         addPoint.z = std::numeric_limits<float>::quiet_NaN();
         addPoint.r = input_cloud->at(cols, rows).r;
         addPoint.g = input_cloud->at(cols, rows).g;
