@@ -12,10 +12,12 @@ EasyLabel is created to work with RGB-D data and uses [OpenCV](http://opencv.org
 
 | Name | Version | Licence |
 | ------------- |:-------------:| -----:|
-| [OpenCV](http://opencv.org/)  | 2.4+  or 3.x | 3-clause BSD |
-| [Boost](http://www.boost.org/)  | 1.48+ | Boost Software License |
-| [PCL](http://pointclouds.org/)  | 1.8.x | BSD |
+| [OpenCV](http://opencv.org/)  | 2.4+  or above | 3-clause BSD |
+| [Boost](http://www.boost.org/)  | 1.48+ or above | Boost Software License |
+| [PCL](http://pointclouds.org/)  | 1.12.x | BSD |
 | [CMake](https://cmake.org)  | 3.5.1+ | 3-clause BSD |
+
+For pcl version below 1.12.x use [version 1.0.0](https://github.com/markus-suchi/easylabel/tree/v1.0.0).
 
 ## Install from Source
 
